@@ -1,4 +1,4 @@
-#Prompts
+# Prompts
 * please write me html, javascript and css to make a pomodoro timer with soothing visual elements
     * css cut off before it finished generating
 * please rewrite the css and make it more soothing
