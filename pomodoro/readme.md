@@ -9,3 +9,5 @@
 * please give me just the css to add a nice mint theme to the bootstrap version
 * the mint background is only applying to the container, and the container is not filling the page can you make it apply to the entire page?
 * Result: got a nice (albeit feature limited) mobile responsive pomodoro timer.
+
+[<img src="result.png" width="250"/>](image.png)
