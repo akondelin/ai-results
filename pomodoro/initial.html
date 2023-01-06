@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Pomodoro Timer</title>
+  <style>
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 3em;
+    }
+
+    #timer {
+      margin-bottom: 1em;
+      color: #333;
+    }
+
+    #buttons {
+      display: flex;
+    }
+
+    button {
+      font-size: 1em;
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 5px;
+      background: #333;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    button:active {
+      background: #111;
+    }
+
+    /* Soothing visual styles */
+    body {
+      background: linear-gradient(to bottom, #fff, #ddd);
+      background-size: 100% 20%;
+      background-repeat: no-repeat;
+      transition: background-size 0.5s ease-in-out;
+    
+    }
+    /* Show "loading" icon when timer is running */
+    .running #container::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 5px solid #333;
+      border-radius: 50%;
+      border-top-color: transparent;
+      width: 1.5em;
+      height: 1.5em;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Gradually change background color while timer is running */
+    .running {
+      background: linear-gradient(to bottom, #fff, #ddd);
+      background-size: 100% 20%;
+      background-repeat: no-repeat;
+      transition: background-size 0.5s ease-in-out;
+    }
+
+    .running #container {
+      animation: color-change 60s linear infinite;
+    }
+
+    @keyframes color-change {
+      0% {
+        background-size: 100% 20%;
+      }
+
+      50% {
+        background-size: 100% 80%;
+      }
+
+      100% {
+        background-size: 100% 20%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div id="timer">25:00</div>
+    <div id="buttons">
+      <button id="start-button">Start</button>
+      <button id="stop-button">Stop</button>
+    </div>
+  </div>
+  <script>
+    const container = document.getElementById("container");
+    const timer = document.getElementById("timer");
+    const startButton = document.getElementById("start-button");
+    const stopButton = document.getElementById("stop-button");
+
+    let countdown;
+
+    function startTimer() {
+      const now = Date.now();
+      const then = now + 25 * 60 * 1000;
+      displayTimeLeft(then - now);
+
+      countdown = setInterval(() => {
+        const timeLeft = then - Date.now();
+        if (timeLeft < 0) {
+          clearInterval(countdown);
+          return;
+        }
+        displayTimeLeft(timeLeft);
+      }, 1000);
+    }
+
+    function displayTimeLeft(timeLeft) {
+      const minutes = Math.floor(timeLeft / 1000 / 60);
+      const seconds = Math.floor((timeLeft / 1000) % 60);
+      const display = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+      timer.innerHTML = display;
+    }
+
+    function stopTimer() {
+      clearInterval(countdown);
+    }
+
+    startButton.addEventListener("click", startTimer);
+    stopButton.addEventListener("click", stopTimer);
+
+
+  </script>
+</body>
+
+</html>
