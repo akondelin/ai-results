@@ -4,7 +4,7 @@
     const lowestValues = [];
 
     // Iterate over the array of arrays
-    for (let i = 0; i < arrOfArrs.length; i++) {
+    for (var  i = 0; i < arrOfArrs.length; i++) {
       // Sort the current array in ascending order
       const sortedArray = arrOfArrs[i].sort((a, b) => a - b);
 
@@ -48,6 +48,7 @@
         if (lowestValues.includes(arrOfArrs[i][j])) {
           // If the current value has already been included, remove it from the lowestValues array
           const index = lowestValues.indexOf(arrOfArrs[i][j]);
+
           lowestValues.splice(index, 1);
         } else {
           // If the current value has not already been included, add it to the valuesToInclude array
