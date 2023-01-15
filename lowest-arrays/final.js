@@ -1,4 +1,9 @@
 
+
+
+
+
+/* I QUIT */
 function getLowestValues(arrOfArrs) {
   // Initialize an array to store the lowest values
   const lowestValues = [];
@@ -68,4 +73,5 @@ function getLowestValues(arrOfArrs) {
 const arrOfArrs = [[1, 2, 3, 4], [3, 4, 5], [2, 6, 7]];
 const lowestValues = getLowestValues(arrOfArrs);
 console.log(lowestValues); // Output: [[1, 3], [4, 5], [2, 6, 7]]
+
 
