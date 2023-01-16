@@ -1,4 +1,16 @@
 <script>
+	$(document).ready(function(){
+	    	  
+	    		
+		$("#button").click(function(){	
+		setValue(async function(arrObjects){
+		    
+		objModel = await ConvertObjectsToModel(arrObjects);
+		console.log("JSON file: ", objModel);
+
+		setTimeout(function(){
+
+			const arrOfArrs = Object.values(objModel);
   function getLowestValues(arrOfArrs) {
     // Initialize an array to store the lowest values
     const lowestValues = [];
@@ -62,10 +74,13 @@
     // Return the final output
     return output;
   }
-
-  // Example usage
-  const arrOfArrs = [[1, 2, 3, 4], [3, 4, 5], [2, 6, 7]];
+  let count = 10;
+  
   const lowestValues = getLowestValues(arrOfArrs);
-  console.log(lowestValues); // Output: [[1, 3], [4, 5], [2, 6, 7]]
+  console.log("JSON format output: ", lowestValues);
+  		}, 1000);
+	    });	
+	});	
+    });
 
 </script>
